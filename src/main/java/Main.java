@@ -11,7 +11,9 @@ public class Main {
     int q;
   }
   public static void main(String[] args) {
-
+    Rabbit rabbit = new Rabbit();
+    Food food = new Apple();
+    rabbit.eat(food);
   }
 }
 
@@ -21,5 +23,23 @@ class Rabbit {
   }
   public Rabbit() {
     System.out.println("Rabbit constructor");
+  }
+  public void eat(Food food) {
+    System.out.println("Rabbit eat and feel" + food.getTaste());
+  }
+}
+
+interface Food {
+  String getTaste();
+}
+
+class Apple implements Food {
+  private String taste;
+  {
+    this.taste = "apple taste";
+  }
+  @Override
+  public String getTaste() {
+    return this.taste;
   }
 }
