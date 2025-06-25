@@ -4,14 +4,13 @@ public class Main {
     Fox fox = new Fox();
 
     Food apple = new Apple();
-    Food grape = new Grape();
 
     rabbit.eat(apple);
-    fox.eat(grape);
+    fox.eat(rabbit);
   }
 }
 
-class Rabbit {
+class Rabbit implements Food{
   static {
     System.out.println("Rabbit static block");
   }
@@ -22,6 +21,11 @@ class Rabbit {
 
   public void eat(Food food) {
     System.out.println("Rabbit eats and feels " + food.getTaste());
+  }
+
+  @Override
+  public String getTaste() {
+    return "rabbit taste";
   }
 }
 
@@ -48,19 +52,6 @@ class Apple implements Food {
 
   {
     this.taste = "sweet apple flavor";
-  }
-
-  @Override
-  public String getTaste() {
-    return this.taste;
-  }
-}
-
-class Grape implements Food {
-  private String taste;
-
-  {
-    this.taste = "juicy grape flavor";
   }
 
   @Override
